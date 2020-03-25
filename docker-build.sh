@@ -81,5 +81,5 @@ if [ ! -e $NGINX_PATH ]; then
 #    chmod +x /usr/local/nginx/script/start.sh
 #    chmod +x /usr/local/nginx/script/restart.sh
 
-    update-rc.d nginx defaults
+#    update-rc.d nginx defaults
 fi
