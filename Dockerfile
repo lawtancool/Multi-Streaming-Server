@@ -8,4 +8,4 @@ RUN chmod +x docker-build.sh && ./docker-build.sh
 
 RUN chmod +x docker-entrypoint.sh
 
-CMD ["docker-entrypoint.sh"]
+CMD ["/docker/docker-entrypoint.sh"]
