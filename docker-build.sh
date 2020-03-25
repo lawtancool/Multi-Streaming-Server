@@ -73,10 +73,12 @@ if [ ! -e $NGINX_PATH ]; then
 
     # Make sure that the script uses Unix line endings
     sed -i 's/\r//' /etc/init.d/nginx
+    sed -i 's/\r//' /usr/local/nginx/script/start.sh
     sed -i 's/\r//' /usr/local/nginx/script/restart.sh
 
     # Make sure the scripts can be executed
     chmod +x /etc/init.d/nginx
+    chmod +x /usr/local/nginx/script/start.sh
     chmod +x /usr/local/nginx/script/restart.sh
 
     update-rc.d nginx defaults
