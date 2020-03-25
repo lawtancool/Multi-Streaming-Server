@@ -15,7 +15,7 @@ USER=root
 case "$1" in
         start)
             echo "Start Nginx service"
-            /usr/local/nginx/script/restart.sh
+            /usr/local/nginx/script/start.sh
             ;;
         stop)
             echo "Stop Nginx service"
