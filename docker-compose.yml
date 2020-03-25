@@ -5,6 +5,28 @@ services:
     container_name: multi-streaming-server
     volumes:
       - ./nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
-    expose:
-      - "8080"
-      - "1935"
+    ports:
+      - "8080:8080"
+      - "1935:1935"
+    restart: always
+    networks:
+      net:
+        aliases:
+          - multi-streaming-server
+  stunnel:
+    image: dweomer/stunnel
+    container_name: multi-streaming-server_stunnel
+    volumes:
+      - ./stunnel.conf:/etc/stunnel/stunnel.conf:ro
+    environment:
+      - STUNNEL_SERVICE=rtmps
+      - STUNNEL_ACCEPT=1936
+      - STUNNEL_CONNECT=live-upload.instagram.com:443
+      - STUNNEL_VERIFY_CHAIN=no
+    restart: always
+    networks:
+      net:
+        aliases:
+          - stunnel
+networks:
+  net:

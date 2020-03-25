@@ -6,6 +6,7 @@ WORKDIR /docker
 
 RUN chmod +x docker-build.sh && ./docker-build.sh
 
-RUN chmod +x docker-entrypoint.sh
+RUN ln -sf /dev/stdout /usr/local/nginx/logs/access.log \
+    && ln -sf /dev/stderr /usr/local/nginx/logs/error.log
 
-CMD ["/docker/docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]

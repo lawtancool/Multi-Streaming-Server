@@ -19,13 +19,13 @@ if [ ! -e $NGINX_PATH ]; then
     echo "Nginx server doesn't exist yet."
 
     # Add an APT repository to install FFMpeg (used to encode video stream)
-    add-apt-repository ppa:mc3man/trusty-media
+#    add-apt-repository ppa:mc3man/trusty-media
 
     # Make sure the new APT repository is taken into account
     apt-get update
 
     # Install requirements
-    apt-get install -y build-essential libpcre3 libpcre3-dev openssl libssl-dev unzip libaio1 ffmpeg wget curl unzip
+    apt-get install -y build-essential libpcre3 libpcre3-dev openssl libssl-dev unzip libaio1 ffmpeg wget curl
 
     # Download Nginx server
     wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
@@ -66,45 +66,20 @@ if [ ! -e $NGINX_PATH ]; then
     echo "alias gonginx='cd /usr/local/nginx'" >> ~/.bashrc
 
     # Copy Nginx scripts
-    cp -rf ${PROJECT_PATH}/nginx/script/ /usr/local/nginx
+#    cp -rf ${PROJECT_PATH}/nginx/script/ /usr/local/nginx
 
     # Copy Nginx script to launch Nginx at startup
-    cp -f ${PROJECT_PATH}/nginx/init/nginx /etc/init.d/
+#    cp -f ${PROJECT_PATH}/nginx/init/nginx /etc/init.d/
 
     # Make sure that the script uses Unix line endings
-    sed -i 's/\r//' /etc/init.d/nginx
-    sed -i 's/\r//' /usr/local/nginx/script/start.sh
-    sed -i 's/\r//' /usr/local/nginx/script/restart.sh
+#    sed -i 's/\r//' /etc/init.d/nginx
+#    sed -i 's/\r//' /usr/local/nginx/script/start.sh
+#    sed -i 's/\r//' /usr/local/nginx/script/restart.sh
 
     # Make sure the scripts can be executed
-    chmod +x /etc/init.d/nginx
-    chmod +x /usr/local/nginx/script/start.sh
-    chmod +x /usr/local/nginx/script/restart.sh
+#    chmod +x /etc/init.d/nginx
+#    chmod +x /usr/local/nginx/script/start.sh
+#    chmod +x /usr/local/nginx/script/restart.sh
 
     update-rc.d nginx defaults
-fi
-
-if [ ! -e $NGINX_CONFIG_WATCHER_PATH ]; then
-    echo "Nginx's configuration watcher doesn't exist yet."
-
-    # Install Node JS and NPM
-    bash -c "$(curl -sL https://deb.nodesource.com/setup_10.x)"
-	  apt-get install -y nodejs
-
-    # Install forever
-    npm install forever -g
-
-    # Copy the Nginx config file watcher script
-    cp -rf ${PROJECT_PATH}/nodejs/nginx-conf-watcher ${NGINX_CONFIG_WATCHER_PATH}
-
-    # Copy nginx-conf-watcher to watch Nginx config file at startup
-    cp -f ${PROJECT_PATH}/nginx/init/nginx-conf-watcher /etc/init.d/
-
-    # Make sure that the script use Unix line endings
-    sed -i 's/\r//' /etc/init.d/nginx-conf-watcher
-
-    # Make sure the scripts can be executed
-    chmod +x /etc/init.d/nginx-conf-watcher
-
-    update-rc.d nginx-conf-watcher defaults
 fi
