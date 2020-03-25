@@ -1,0 +1,10 @@
+version: '3'
+services:
+  multi-streaming-server:
+    image: lawtancool/multi-streaming-server
+    container_name: multi-streaming-server
+    volumes:
+      - ./nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
+    expose:
+      - "8080:8080"
+      - "1935:1935"
