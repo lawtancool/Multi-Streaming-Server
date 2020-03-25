@@ -8,6 +8,6 @@ if [[ $? != 0 ]]; then
 	exit 1;
 fi
 
-/etc/init.d/nginx-conf-watcher start
+#/etc/init.d/nginx-conf-watcher start
 
 exec nginx
