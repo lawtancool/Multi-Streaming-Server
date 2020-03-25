@@ -25,7 +25,7 @@ if [ ! -e $NGINX_PATH ]; then
     apt-get update
 
     # Install requirements
-    apt-get install -y build-essential libpcre3 libpcre3-dev openssl libssl-dev unzip libaio1 ffmpeg
+    apt-get install -y build-essential libpcre3 libpcre3-dev openssl libssl-dev unzip libaio1 ffmpeg wget curl unzip
 
     # Download Nginx server
     wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
@@ -86,7 +86,7 @@ if [ ! -e $NGINX_CONFIG_WATCHER_PATH ]; then
     echo "Nginx's configuration watcher doesn't exist yet."
 
     # Install Node JS and NPM
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    bash -c "$(curl -sL https://deb.nodesource.com/setup_8.x)" | bash -
 	apt-get install -y nodejs nodejs-legacy npm
 
     # Install forever
