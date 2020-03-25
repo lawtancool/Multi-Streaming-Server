@@ -17,7 +17,7 @@ function restartNginx() {
     });
 }
 
-var watcher = fs.watchFile('/vagrant/nginx/conf/nginx.conf', (curr, prev) => {
+var watcher = fs.watchFile('/usr/local/nginx/conf/nginx.conf', (curr, prev) => {
     console.log('Nginx config file changed!');
     restartNginx();
 });
