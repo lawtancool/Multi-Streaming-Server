@@ -2,7 +2,7 @@ FROM nvidia/cuda:10.2-runtime-ubuntu16.04
 
 WORKDIR /
 
-COPY . / /
+ADD / /
 
 RUN docker-build.sh
 
