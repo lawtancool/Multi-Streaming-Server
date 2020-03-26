@@ -27,7 +27,7 @@ You will need to have `docker-compose` installed on your host system.
 Modify the included `docker-compose.yml` file to suit your needs, and run `docker-compose up -d` in the same directory as the `docker-compose.yml` file to run.
 
 ### Using docker-compose with stunnel
-Nginx does not natively support RTMPS streaming (only RTMP), so to stream to services that require RTMPS (eg. Facebook, Instagram Live), rename `docker-compose.yml.stunnel` to `docker-compose.yml` and run `docker-compose up -d` to run both this container and a stunnel container together. Nginx will send its RTMP stream to stunnel to be converted to RTMP (see the Instagram config entry in `nginx.template.conf` as an example). More information can be found [here](https://www.jakobstoeck.de/2017/how-to-encrypt-rtmp-or-anything-really-over-ssl-tls/).
+Nginx does not natively support RTMPS streaming (only RTMP), so to stream to services that require RTMPS (eg. Facebook, Instagram Live), rename `docker-compose.yml.stunnel` to `docker-compose.yml` and run `docker-compose up -d` to run both this container and a stunnel container together. Nginx will send its RTMP stream to stunnel to be converted to RTMPS (see the Instagram config entry in `nginx.template.conf` as an example). More information can be found [here](https://www.jakobstoeck.de/2017/how-to-encrypt-rtmp-or-anything-really-over-ssl-tls/).
 
 ## FAQ
 
